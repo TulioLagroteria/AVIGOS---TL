@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0f172a; /* Fundo escuro para destacar o dourado */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Container principal da Logo */
+.logo-avigos-container {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Círculo de fundo dourado */
+.logo-bg-circle {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/avigos_circulo_fundo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none;
+}
+
+/* Caixa que segura o Galo */
+.logo-rooster-box {
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    top: 15%; /* Ajusta a altura do galo dentro do círculo */
+    pointer-events: none;
+}
+
+/* Estado do Galo Parado */
+.rooster-static {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/galo_estatico.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+/* Estado do Galo Animado (Batendo asas e cantando) */
+.rooster-animated {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* Pode ser um GIF transparente de alta qualidade ou uma animação por Sprite Sheet */
+    background-image: url('images/galo_animado.gif'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+/* Texto AVIGOS na parte inferior */
+.logo-text-avigos {
+    position: absolute;
+    width: 70%;
+    height: 20%;
+    bottom: 5%;
+    background-image: url('images/texto_avigos.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none;
+    transition: transform 0.2s ease-out;
+}
+
+/* INTERAÇÕES AO PASSAR O MOUSE (Gatilhos ativados pelo JS) */
+
+/* 1. Esconde o galo estático e mostra a animação dele cantando/batendo asas */
+.logo-avigos-container.hovered .rooster-static {
+    opacity: 0;
+}
+.logo-avigos-container.hovered .rooster-animated {
+    opacity: 1;
+}
+
+/* 2. Faz o texto crescer e iniciar a pulsação contínua a cada 0.2 segundos */
+.logo-avigos-container.hovered .logo-text-avigos {
+    animation: pulseTextAvigos 0.2s infinite alternate ease-in-out;
+}
+
+/* Definição da animação de pulsação rápida para o texto */
+@keyframes pulseTextAvigos {
+    0% {
+        transform: scale(1.1); /* Tamanho inicial aumentado no hover */
+    }
+    100% {
+        transform: scale(1.25); /* Pulsa expandindo um pouco mais */
+    }
+}
