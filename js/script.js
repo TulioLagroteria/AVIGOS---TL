@@ -1,14 +1,11 @@
-// Seleciona o container da Logo Avigos
-const avigosLogo = document.getElementById('logoAVIGOS');
+const logoTL = document.getElementById('tlLogo');
 
-if (avigosLogo) {
-    // Quando o mouse entra: ativa o loop do texto e inicia a animação do galo
-    avigosLogo.addEventListener('mouseenter', () => {
-        avigosLogo.classList.add('hovered');
+if (logoTL) {
+    logoTL.addEventListener('mouseenter', () => {
+        logoTL.classList.add('hovered');
     });
 
-    // Quando o mouse sai: reseta o galo para o estado estático e para a pulsação
-    avigosLogo.addEventListener('mouseleave', () => {
-        avigosLogo.classList.remove('hovered');
+    logoTL.addEventListener('mouseleave', () => {
+        logoTL.classList.remove('hovered');
     });
 }
